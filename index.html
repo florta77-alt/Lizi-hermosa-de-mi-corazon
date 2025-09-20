@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores para Lizi</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #ffe066;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            position: absolute;
+            top: 10%;
+            text-align: center;
+            font-size: 2em;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 5px #00000050;
+        }
+
+        .flower {
+            position: absolute;
+            width: 50px;
+            opacity: 0;
+            transform: scale(0);
+            animation: appear 1s forwards;
+        }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Te amo mi niña hermosa, Lizi de mi corazón ❤️</h1>
+
+    <script>
+        const flowerImages = [
+            "https://i.postimg.cc/4N7yZ8yV/flower1.png",
+            "https://i.postimg.cc/3NqT9H4L/flower2.png",
+            "https://i.postimg.cc/jj2Q7Rhv/flower3.png"
+        ];
+
+        const numberOfFlowers = 20;
+
+        for (let i = 0; i < numberOfFlowers; i++) {
+            const flower = document.createElement('img');
+            flower.src = flowerImages[Math.floor(Math.random() * flowerImages.length)];
+            flower.classList.add('flower');
+            flower.style.left = 40 + Math.random() * 20 + 'vw';
+            flower.style.bottom = 0;
+            flower.style.width = 40 + Math.random() * 30 + 'px';
+            flower.style.animationDelay = i * 0.3 + 's';
+            document.body.appendChild(flower);
+        }
+    </script>
+</body>
+</html>
