@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores para Lizi</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: #ffe066;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramo de flores para Lizi</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #ffe066;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Arial', sans-serif;
+    }
 
-        h1 {
-            position: absolute;
-            top: 10%;
-            text-align: center;
-            font-size: 2em;
-            color: #ff6b6b;
-            text-shadow: 2px 2px 5px #00000050;
-        }
+    h1 {
+        position: absolute;
+        top: 10%;
+        text-align: center;
+        font-size: 2em;
+        color: #ff6b6b;
+        text-shadow: 2px 2px 5px #00000050;
+    }
 
-        .flower {
-            position: absolute;
-            width: 50px;
-            opacity: 0;
-            transform: scale(0);
-            animation: appear 1s forwards;
-        }
+    .flower {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle at 30% 30%, yellow 40%, orange 70%);
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0);
+        animation: appear 1s forwards;
+    }
 
-        @keyframes appear {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+    @keyframes appear {
+        to {
+            opacity: 1;
+            transform: scale(1);
         }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <h1>Te amo mi niña hermosa, Lizi de mi corazón ❤️</h1>
+<h1>Te amo mi niña hermosa, Lizi de mi corazón ❤️</h1>
 
-    <script>
-        const flowerImages = [
-            "https://i.postimg.cc/4N7yZ8yV/flower1.png",
-            "https://i.postimg.cc/3NqT9H4L/flower2.png",
-            "https://i.postimg.cc/jj2Q7Rhv/flower3.png"
-        ];
+<script>
+    const numberOfFlowers = 25; // cantidad de flores
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
 
-        const numberOfFlowers = 20;
+    for (let i = 0; i < numberOfFlowers; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
 
-        for (let i = 0; i < numberOfFlowers; i++) {
-            const flower = document.createElement('img');
-            flower.src = flowerImages[Math.floor(Math.random() * flowerImages.length)];
-            flower.classList.add('flower');
-            flower.style.left = 40 + Math.random() * 20 + 'vw';
-            flower.style.bottom = 0;
-            flower.style.width = 40 + Math.random() * 30 + 'px';
-            flower.style.animationDelay = i * 0.3 + 's';
-            document.body.appendChild(flower);
-        }
-    </script>
+        // Posición aleatoria cerca del centro para formar el ramo
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = Math.random() * 100; // distancia desde el centro
+        const x = centerX + radius * Math.cos(angle) - 20; // -20 para centrar la flor
+        const y = centerY + radius * Math.sin(angle) - 20;
+
+        flower.style.left = x + 'px';
+        flower.style.top = y + 'px';
+
+        // Animación escalonada
+        flower.style.animationDelay = (i * 0.2) + 's';
+
+        document.body.appendChild(flower);
+    }
+</script>
 </body>
 </html>
